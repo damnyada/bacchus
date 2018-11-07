@@ -1,0 +1,9 @@
+
+body, .header, h3, #fill, #total-slices, .slice {
+    margin-bottom: 20px;
+}
+#result iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}

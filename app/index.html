@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>HTML Builder</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/builder.css">
+    </head>
+    <body>
+        <div class="header">
+            <nav class="navbar navbar-dark bg-dark">
+                <a href="#" class="navbar-brand">
+                    HTML Builder
+                </a>
+            </nav>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="float-left">Slices</h3>
+                    <button type="button" class="btn btn-warning float-right" name="fill" id="fill">Fill Slice Links</button>
+                    <select class="form-control" name="total-slices" id="total-slices">
+                        <option value="1" disabled>Selecione o total de slices</option>
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                    </select>
+                    <div id="slice-wrapper">
+                        <div class="slice">
+                            <h5>Slice 1</h5>
+                            <input class="form-control slice-field slice-image" type="text" name="image" placeholder="1 - Image">
+                            <input class="form-control slice-field slice-rilt" type="text" name="rilt" placeholder="1 - Rilt">
+                            <input class="form-control slice-field slice-href" type="text" name="href" placeholder="1 - Link">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger" name="pop" id="pop">Build Pop</button>
+                    <button type="button" class="btn btn-dark" name="premium" id="premium">Build Premium</button>
+                </div>
+                <div class="col-sm-6">
+                    <h3 class="float-left">HTML</h3>
+                    <button type="button" class="btn btn-warning float-right" name="download" id="download">Download</button>
+                    <div id="result"></div>
+                </div>
+            </div>
+        </div>
+        <!-- <script src="js/builder.js"></script> -->
+        <script src="bundle.js"></script>
+    </body>
+</html>
