@@ -1,5 +1,5 @@
 
-body, .header, h3, #fill, #total-slices, .slice {
+body, .header, h3, #fill, #total-slices, .slice, #footer {
     margin-bottom: 20px;
 }
 #result iframe {
