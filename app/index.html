@@ -15,10 +15,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 class="float-left">Slices</h3>
-                    <button type="button" class="btn btn-warning float-right" name="fill" id="fill">Fill Slice Links</button>
-                    <select class="form-control" name="total-slices" id="total-slices">
-                        <option value="1" disabled>Selecione o total de slices</option>
+                    <h3 class="float-left">Rows</h3>
+                    <button type="button" class="btn btn-warning btn-sm float-right btn-fill" name="fill" id="fill">Fill Slice Links</button>
+                    <select class="form-control form-control-sm" name="total-rows" id="total-rows">
+                        <option value="1" disabled>Selecione o total de row</option>
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -40,20 +40,20 @@
                         <option value="19">19</option>
                         <option value="20">20</option>
                     </select>
-                    <div id="slice-wrapper">
+                    <div id="row-wrapper">
                         <div class="slice">
-                            <h5>Slice 1</h5>
-                            <input class="form-control slice-field slice-image" type="text" name="image" placeholder="1 - Image">
-                            <input class="form-control slice-field slice-rilt" type="text" name="rilt" placeholder="1 - Rilt">
-                            <input class="form-control slice-field slice-href" type="text" name="href" placeholder="1 - Link">
+                            <h5>Row 1</h5>
+                            <input class="form-control form-control-sm slice-field slice-image" type="text" name="image" placeholder="1 - Image">
+                            <input class="form-control form-control-sm slice-field slice-rilt" type="text" name="rilt" placeholder="1 - Rilt">
+                            <input class="form-control form-control-sm slice-field slice-href" type="text" name="href" placeholder="1 - Link">
                         </div>
                     </div>
-                    <button type="button" class="btn btn-danger" name="pop" id="pop">Build Pop</button>
-                    <button type="button" class="btn btn-dark" name="premium" id="premium">Build Premium</button>
                 </div>
                 <div class="col-sm-6">
                     <h3 class="float-left">HTML</h3>
-                    <button type="button" class="btn btn-warning float-right" name="download" id="download">Download</button>
+                    <button type="button" class="btn btn-warning btn-sm float-right btn-build" name="download" id="download">Download</button>
+                    <button type="button" class="btn btn-dark btn-sm float-right btn-build" name="premium" id="premium">Build Premium</button>
+                    <button type="button" class="btn btn-danger btn-sm float-right btn-build" name="pop" id="pop">Build Pop</button>
                     <div id="result"></div>
                 </div>
             </div>

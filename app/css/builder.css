@@ -1,9 +1,17 @@
-
-body, .header, h3, #fill, #total-slices, .slice, #footer {
+body {
+    padding-bottom: 20px;
+}
+h1, h2, h3, h4, h5, h6 {
+    display: inline-block;
+}
+.header, h3, #fill, #total-rows, .slice, #footer {
     margin-bottom: 20px;
 }
 #result iframe {
     border: none;
     width: 100%;
-    height: 100%;
+    height: 800px;
+}
+.btn-build {
+    margin-left: 10px;
 }
