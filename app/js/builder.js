@@ -45,13 +45,6 @@ function fillSlices() {
             allSlices[i].children[1].value = firstSlice[1] + num + firstSlice[3];
         }
     }
-
-    // set homepage URL if slice address is empty
-    if (allSlices[0].children[3].value === '') {
-        for (i = 0; i < allSlices.length; i++) {
-            allSlices[i].children[3].value = 'https://www.evino.com.br';
-        }
-    }
 }
 
 function changeSlices(qtd) {
@@ -62,7 +55,7 @@ function changeSlices(qtd) {
     if (qtd > allSlices.length) {
         // add rows to HTML
         for (i = allSlices.length + 1; i <= qtd; i++) {
-            fields = `<h5>Row ${i}</h5><input class="form-control form-control-sm slice-field slice-image" type="text" name="image" placeholder="Image"><input class="form-control form-control-sm slice-field slice-rilt" type="text" name="rilt" placeholder="Rilt"><input class="form-control form-control-sm slice-field slice-href" type="text" name="href" placeholder="Link">`;
+            fields = `<h5>Row ${i}</h5><input class="form-control form-control-sm slice-field slice-image" type="text" name="image" placeholder="Image"><input class="form-control form-control-sm slice-field slice-rilt" type="text" name="rilt" placeholder="Rilt"><input class="form-control form-control-sm slice-field slice-href" type="text" name="href" placeholder="Link" value="https://www.evino.com.br">`;
 
             var div = document.createElement('div');
             div.className = 'slice';
