@@ -1,19 +1,30 @@
 body {
+    background-color: #eee;
+    padding-top: 60px;
     padding-bottom: 20px;
 }
-h1, h2, h3, h4, h5, h6 {
-    display: inline-block;
-}
-.header, h3, #fill, #total-rows, .slice, #footer {
+.header {
     margin-bottom: 20px;
 }
-#result iframe {
-    border: none;
-    width: 100%;
-    height: 2000px;
+form {
+    margin-bottom: 0;
+}
+h2 {
+    font-size: 1.5em;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+h3 {
+    font-size: 1.2em;
+}
+.btn-fill {
+    margin-right: 30px;
 }
 .btn-build {
     margin-left: 10px;
+}
+.slice, #total-rows {
+    margin-bottom: 20px;
 }
 .main.slice {
     position: relative;
@@ -30,4 +41,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .extra.slice {
     display: block;
+}
+#result iframe {
+    border: none;
+    width: 100%;
+    height: 2000px;
 }

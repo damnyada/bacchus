@@ -77,42 +77,42 @@ function build(template) {
     var allSlices = getSlices();
     var parsedLinks = [];
     var sliceTemplate = '';
+    var count = 0;
 
-    var i = 0;
-    while (i < allSlices.length) {
-        parsedLinks.push(parseLink(allSlices[i].children[1].value));
+    while (count < allSlices.length) {
+        parsedLinks.push(parseLink(allSlices[count].children[1].value));
 
-        if (allSlices[i].lastElementChild.className === 'extra slice') {
-            parsedLinks.push(parseLink(allSlices[i+1].children[1].value));
+        if (allSlices[count].lastElementChild.className === 'extra slice') {
+            parsedLinks.push(parseLink(allSlices[count+1].children[1].value));
 
             sliceTemplate += `<tr>
                 <td>
                     <table align="center" border="0" cellpadding="0" cellspacing="0" width="650" style="border-collapse:collapse;line-height:100%!important;width:650px">
                         <tr>
                             <td width="325">
-                                <a href="${allSlices[i].children[3].value}" target="_blank" rilt="${allSlices[i].children[2].value}">
-                                    <img src="${parsedLinks[i]}" alt="" style="display:block">
+                                <a href="${allSlices[count].children[3].value}" target="_blank" rilt="${allSlices[count].children[2].value}">
+                                    <img src="${parsedLinks[count]}" alt="" style="display:block">
                                 </a>
                             </td>
                             <td width="325">
-                                <a href="${allSlices[i+1].children[3].value}" target="_blank" rilt="${allSlices[i+1].children[2].value}">
-                                    <img src="${parsedLinks[i+1]}" alt="" style="display:block">
+                                <a href="${allSlices[count+1].children[3].value}" target="_blank" rilt="${allSlices[count+1].children[2].value}">
+                                    <img src="${parsedLinks[count+1]}" alt="" style="display:block">
                                 </a>
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>`;
-            i += 2;
+            count += 2;
         } else {
             sliceTemplate += `<tr>
                 <td>
-                    <a href="${allSlices[i].children[3].value}" target="_blank" rilt="${allSlices[i].children[2].value}">
-                        <img src="${parsedLinks[i]}" alt="Evino Black Friday" style="display:block">
+                    <a href="${allSlices[count].children[3].value}" target="_blank" rilt="${allSlices[count].children[2].value}">
+                        <img src="${parsedLinks[count]}" alt="Evino Black Friday" style="display:block">
                     </a>
                 </td>
             </tr>`;
-            i++;
+            count++;
         }
     }
 
@@ -151,9 +151,7 @@ document.getElementById('pop').addEventListener('click', function(e) {
 });
 
 document.addEventListener('click', function(e) {
-    var eClass = e.target.className;
-
-    if (e.target && eClass.indexOf('enable-extra') >= 0) {
+    if (e.target && e.target.className.indexOf('enable-extra') >= 0) {
         var extra = e.target.parentElement.lastElementChild.classList;
         extra.toggle('slice');
     }

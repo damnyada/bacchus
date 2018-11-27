@@ -3,20 +3,27 @@
         <title>HTML Builder</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="css/builder.css">
+        <!-- use of initial-scale means width param is treated as min-width -->
+        <meta name="viewport" content="width=650, initial-scale=1.0" />
     </head>
     <body>
         <div class="header">
-            <nav class="navbar navbar-dark bg-dark">
+            <nav class="navbar fixed-top navbar-dark bg-dark">
                 <a href="#" class="navbar-brand">
                     HTML Builder
                 </a>
+                <form class="form-inline">
+                    <button type="button" class="btn btn-warning btn-sm btn-fill" name="fill" id="fill">Fill Slice Links</button>
+                    <button type="button" class="btn btn-danger btn-sm btn-build" name="pop" id="pop">Build Pop</button>
+                    <button type="button" class="btn btn-light btn-sm btn-build" name="premium" id="premium">Build Premium</button>
+                    <button type="button" class="btn btn-warning btn-sm btn-build" name="download" id="download">Download</button>
+                </form>
             </nav>
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-6">
-                    <h3 class="float-left">Rows</h3>
-                    <button type="button" class="btn btn-warning btn-sm float-right btn-fill" name="fill" id="fill">Fill Slice Links</button>
+                <div class="col-sm-12 col-md-6">
+                    <h2>Rows</h2>
                     <select class="form-control form-control-sm" name="total-rows" id="total-rows">
                         <option value="1" disabled>Selecione o total de row</option>
                         <option value="1" selected>1</option>
@@ -42,13 +49,13 @@
                     </select>
                     <div id="row-wrapper">
                         <div class="main slice">
-                            <h5>Row 1</h5>
+                            <h3>Row 1</h3>
                             <input class="form-control form-control-sm" type="text" placeholder="Image">
                             <input class="form-control form-control-sm" type="text" placeholder="Rilt">
                             <input class="form-control form-control-sm" type="text" placeholder="Link" value="https://www.evino.com.br">
                             <button type="button" class="enable-extra btn btn-warning btn-sm float-right">+</button>
                             <div class="extra">
-                                <h5>Double slice</h5>
+                                <h3>Double slice</h3>
                                 <input class="form-control form-control-sm" type="text" placeholder="Image">
                                 <input class="form-control form-control-sm" type="text" placeholder="Rilt">
                                 <input class="form-control form-control-sm" type="text" placeholder="Link" value="https://www.evino.com.br">
@@ -56,11 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <h3 class="float-left">HTML</h3>
-                    <button type="button" class="btn btn-warning btn-sm float-right btn-build" name="download" id="download">Download</button>
-                    <button type="button" class="btn btn-dark btn-sm float-right btn-build" name="premium" id="premium">Build Premium</button>
-                    <button type="button" class="btn btn-danger btn-sm float-right btn-build" name="pop" id="pop">Build Pop</button>
+                <div class="col-sm-12 col-md-6">
                     <div id="result"></div>
                 </div>
             </div>
