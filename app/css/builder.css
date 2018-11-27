@@ -15,3 +15,19 @@ h1, h2, h3, h4, h5, h6 {
 .btn-build {
     margin-left: 10px;
 }
+.main.slice {
+    position: relative;
+}
+.enable-extra {
+    position: absolute;
+    top: -5px;
+    right: 0;
+}
+.extra {
+    margin-top: 10px;
+    padding-left: 15px;
+    display: none;
+}
+.extra.slice {
+    display: block;
+}

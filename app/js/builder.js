@@ -6,6 +6,10 @@ function clearElement(el) {
     el.innerHTML = '';
 }
 
+function getMainSlices() {
+    return document.querySelectorAll('.main.slice');
+}
+
 function getSlices() {
     return document.getElementsByClassName('slice');
 }
@@ -14,7 +18,6 @@ function download(doc) {
     doc = beautify(doc, { indent_size: 2 });
 
     var hiddenElement = document.createElement('a');
-
     hiddenElement.href = 'data:attachment/text,' + encodeURI(doc);
     hiddenElement.target = '_blank';
     hiddenElement.download = 'index.html';
@@ -39,16 +42,16 @@ function fillSlices() {
 
 function changeSlices(qtd) {
     var qtd = qtd > 20 ? 20 : qtd;
-    var allSlices = getSlices();
+    var allSlices = getMainSlices();
     var sliceWrapper = document.getElementById('row-wrapper');
 
     if (qtd > allSlices.length) {
         // add rows to HTML
         for (i = allSlices.length + 1; i <= qtd; i++) {
-            fields = `<h5>Row ${i}</h5><input class="form-control form-control-sm slice-field slice-image" type="text" name="image" placeholder="Image"><input class="form-control form-control-sm slice-field slice-rilt" type="text" name="rilt" placeholder="Rilt"><input class="form-control form-control-sm slice-field slice-href" type="text" name="href" placeholder="Link" value="https://www.evino.com.br">`;
+            fields = `<h5>Row ${i}</h5><input class="form-control form-control-sm" type="text" name="image" placeholder="Image"><input class="form-control form-control-sm" type="text" name="rilt" placeholder="Rilt"><input class="form-control form-control-sm" type="text" name="href" placeholder="Link" value="https://www.evino.com.br"><button type="button" class="enable-extra btn btn-warning btn-sm btn-build">+</button><div class="extra"><h5>Double slice</h5><input class="form-control form-control-sm" type="text" placeholder="Image"><input class="form-control form-control-sm" type="text" placeholder="Rilt"><input class="form-control form-control-sm" type="text" placeholder="Link" value="https://www.evino.com.br"></div>`;
 
             var div = document.createElement('div');
-            div.className = 'slice';
+            div.className = 'main slice';
             div.innerHTML = fields;
 
             document.getElementById('row-wrapper').appendChild(div);
@@ -72,18 +75,45 @@ function parseLink(link) {
 
 function build(template) {
     var allSlices = getSlices();
+    var parsedLinks = [];
     var sliceTemplate = '';
 
-    for (i = 0; i < allSlices.length; i++) {
-        var parsedLink = parseLink(allSlices[i].children[1].value);
+    var i = 0;
+    while (i < allSlices.length) {
+        parsedLinks.push(parseLink(allSlices[i].children[1].value));
 
-        sliceTemplate += `<tr>
-            <td>
-                <a href="${allSlices[i].children[3].value}" target="_blank" rilt="${allSlices[i].children[2].value}">
-                    <img src="${parsedLink}" alt="Evino Black Friday" style="display:block">
-                </a>
-            </td>
-        </tr>`
+        if (allSlices[i].lastElementChild.className === 'extra slice') {
+            parsedLinks.push(parseLink(allSlices[i+1].children[1].value));
+
+            sliceTemplate += `<tr>
+                <td>
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="650" style="border-collapse:collapse;line-height:100%!important;width:650px">
+                        <tr>
+                            <td width="325">
+                                <a href="${allSlices[i].children[3].value}" target="_blank" rilt="${allSlices[i].children[2].value}">
+                                    <img src="${parsedLinks[i]}" alt="" style="display:block">
+                                </a>
+                            </td>
+                            <td width="325">
+                                <a href="${allSlices[i+1].children[3].value}" target="_blank" rilt="${allSlices[i+1].children[2].value}">
+                                    <img src="${parsedLinks[i+1]}" alt="" style="display:block">
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>`;
+            i += 2;
+        } else {
+            sliceTemplate += `<tr>
+                <td>
+                    <a href="${allSlices[i].children[3].value}" target="_blank" rilt="${allSlices[i].children[2].value}">
+                        <img src="${parsedLinks[i]}" alt="Evino Black Friday" style="display:block">
+                    </a>
+                </td>
+            </tr>`;
+            i++;
+        }
     }
 
     if (template === 'premium') {
@@ -118,4 +148,13 @@ document.getElementById('premium').addEventListener('click', function(e) {
 
 document.getElementById('pop').addEventListener('click', function(e) {
     build();
+});
+
+document.addEventListener('click', function(e) {
+    var eClass = e.target.className;
+
+    if (e.target && eClass.indexOf('enable-extra') >= 0) {
+        var extra = e.target.parentElement.lastElementChild.classList;
+        extra.toggle('slice');
+    }
 });
