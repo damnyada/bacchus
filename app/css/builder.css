@@ -23,7 +23,7 @@ h3 {
 .btn-build {
     margin-left: 10px;
 }
-.slice, #total-rows {
+.slice, #preheader, #total-rows {
     margin-bottom: 20px;
 }
 .main.slice {
