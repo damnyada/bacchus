@@ -75,9 +75,8 @@ function changeSlices(qtd) {
 
 // parse FTP URL and outputs final images address
 function parseLink(link) {
-	if (link.indexOf('red.production') > 0) {
-		link = link.replace('ftp://red.production@media','http://static');
-		link = link.replace(/:\d+\/data/,'');
+	if (link.indexOf('media.evino.com.br') > 0) {
+		link = link.replace(/http:\/\/media\.evino\.com\.br\/data|ftp(?:s)?:\/\/(?:red\.production@)?media\.evino\.com\.br:\d+\/data/,'http://static.evino.com.br');
 	}
 	return link;
 }
@@ -95,7 +94,7 @@ function build(template) {
 		slicePreheader = `<tr>
 			<td>
 				<a href="${preheader.children[3].value}" target="_blank" rilt="${preheader.children[2].value}">
-					<img src="${preheader.children[1].value}" alt="Evino" style="display:block">
+					<img src="${parseLink(preheader.children[1].value)}" alt="Evino" style="display:block">
 				</a>
 			</td>
 		</tr>`;
