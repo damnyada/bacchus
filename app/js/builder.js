@@ -5,7 +5,7 @@ import '../css/builder.css';
 const popTemplate = require('../template/templ-pop.hbs');
 const premiumTemplate = require('../template/templ-premium.hbs');
 
-const NEWS_DOMAIN = 'http://static.evino.com.br/BR/upload/news';
+const NEWS_DOMAIN = 'http://static.evino.com.br/BR/upload/news/';
 let code = '';
 
 function clearElement(el) {
@@ -156,10 +156,10 @@ function build(template) {
   };
 
   if (template === 'premium') {
-    newsletter.footer.image = `${NEWS_DOMAIN}/content/footer2018/assinatura-premium.gif`;
+    newsletter.footer.image = `${NEWS_DOMAIN}content/footer2018/assinatura-premium.gif`;
     code.innerHTML = premiumTemplate(newsletter);
   } else {
-    newsletter.footer.image = `${NEWS_DOMAIN}/2018/05_Maio/2018_05_08_redday_12h/images/assinatura.gif`;
+    newsletter.footer.image = `${NEWS_DOMAIN}2018/05_Maio/2018_05_08_redday_12h/images/assinatura.gif`;
     code.innerHTML = popTemplate(newsletter);
   }
 
@@ -168,7 +168,7 @@ function build(template) {
   document.getElementById('result').appendChild(iframe);
 }
 
-document.getElementById('total-rows').addEventListener('change', () => {
+document.getElementById('total-rows').addEventListener('change', function () {
   changeSlices(this.value);
 });
 
