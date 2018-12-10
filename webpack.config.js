@@ -60,12 +60,12 @@ module.exports = {
 	},
 	module: {
 		rules: [
-			{
-				enforce: 'pre',
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'eslint-loader',
-			},
+			// {
+			// 	enforce: 'pre',
+			// 	test: /\.js$/,
+			// 	exclude: /node_modules/,
+			// 	loader: 'eslint-loader',
+			// },
 			{
 				test: /\.css$/,
 				use: [
@@ -90,6 +90,10 @@ module.exports = {
 			{
 				test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
 				loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
+			},
+			{
+				test: /\.hbs$/,
+				loader: "handlebars-loader"
 			}
 		]
 	},
