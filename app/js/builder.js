@@ -2,6 +2,7 @@ import { html as beautify } from 'js-beautify';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/builder.css';
 
+const bacchusSlot = require('../template/bacchus-slot.hbs');
 const popTemplate = require('../template/templ-pop.hbs');
 const premiumTemplate = require('../template/templ-premium.hbs');
 
@@ -56,43 +57,16 @@ function fillSlices() {
 function changeSlices(qtd) {
   const totalSlices = qtd > 20 ? 20 : qtd;
   const mainSlices = getMainSlices();
-  const sliceWrapper = document.getElementById('row-wrapper');
-  let fields = '';
+  const wrapper = document.getElementById('row-wrapper');
+  const fields = {};
   let i;
 
   if (totalSlices > mainSlices.length) {
-    // add rows to HTML
-    for (i = mainSlices.length + 1; i <= totalSlices; i += 1) {
-      fields = `
-        <h5>Row ${i}</h5>
-        <input class="form-control form-control-sm" type="text" name="image" placeholder="Image">
-        <input class="form-control form-control-sm" type="text" name="rilt" placeholder="Rilt">
-        <input
-          class="form-control form-control-sm"
-          type="text"
-          name="href"
-          placeholder="Link"
-          value="https://www.evino.com.br"
-        />
-        <button type="button" class="enable-extra btn btn-warning btn-sm btn-build">+</button>
-        <div class="extra">
-          <h5>Double slice</h5>
-          <input class="form-control form-control-sm" type="text" placeholder="Image">
-          <input class="form-control form-control-sm" type="text" placeholder="Rilt">
-          <input class="form-control form-control-sm" type="text" placeholder="Link" value="https://www.evino.com.br">
-        </div>
-      `;
-
-      const div = document.createElement('div');
-      div.className = 'main slice';
-      div.innerHTML = fields;
-
-      document.getElementById('row-wrapper').appendChild(div);
-    }
+    fields.slots = Array.from({ length: totalSlices - mainSlices.length }, (v, k) => k + 1 + mainSlices.length);
+    wrapper.innerHTML += bacchusSlot(fields);
   } else if (totalSlices < mainSlices.length) {
-    // delete rows from HTML
     for (i = mainSlices.length - 1; i >= totalSlices; i -= 1) {
-      sliceWrapper.removeChild(mainSlices[i]);
+      wrapper.removeChild(mainSlices[i]);
     }
   }
 }
@@ -100,7 +74,7 @@ function changeSlices(qtd) {
 // parse FTP URL and outputs final images address
 function parseLink(link) {
   let newLink = link;
-  const regex = /http:\/\/media\.evino\.com\.br\/data|ftp(?:s)?:\/\/(?:red\.production@)?media\.evino\.com\.br:\d+\/data/;
+  const regex = /http(?:s)?:\/\/media\.evino\.com\.br\/data|ftp(?:s)?:\/\/(?:red\.production@)?media\.evino\.com\.br:\d+\/data/ // eslint-disable-line
 
   if (link.indexOf('media.evino.com.br') > 0) {
     newLink = link.replace(regex, 'http://static.evino.com.br');
